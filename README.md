@@ -5,13 +5,15 @@ Python3 module that provides a class to interact with OpenPGP keyservers using H
 
 Documentation can be found at http://rawgit.com/eadil/pyhkp/master/doc/_build/singlehtml/index.html.
 
-
 Usage:
 
 # setup server
+```
 k = HKP('http://pgp.mit.edu', 11371)
+```
 
 # search for keys
+```
 result = k.search('0x2D230C5F')
 print(result)
 [{'primary_key': {'algorithm': 'DSA',
@@ -30,7 +32,8 @@ print(result)
                 'revoked': False,
                 'user_id': 'Debian Archive Automatic Signing Key (2006) '
                            '<ftpmaster@debian.org>'}]}]
-
+```
+```
 print(k.search('edward snowden'))
 
 [{'primary_key': {'algorithm': 'RSA Encrypt or Sign',
@@ -66,9 +69,14 @@ print(k.search('edward snowden'))
                 'user_id': 'Michael Brauckmann (Dank_an_Edward_Snowden) '
                            '<michael.brauckmann@t-online.de>'}]},
 ...]
+```
 
 # retrieve pubkey as str
+```
 pubkey_str = k.retrieve('0x2D230C5F')
+```
 
 # submit a loaded key (as str)
+```
 k.submit(loaded_key)
+```
