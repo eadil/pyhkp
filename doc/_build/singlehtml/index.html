@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>pyhkp 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="None" href="index.html#document-index" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html#document-index">pyhkp 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="welcome-to-pyhkp-s-documentation">
+<h1>Welcome to pyhkp&#8217;s documentation!<a class="headerlink" href="#welcome-to-pyhkp-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<span id="document-pyhkp"></span><div class="section" id="module-pyhkp">
+<span id="pyhkp-module"></span><h2>pyhkp module<a class="headerlink" href="#module-pyhkp" title="Permalink to this headline">¶</a></h2>
+<p>This module provides a class to interact with OpenPGP keyservers using HKP.</p>
+<dl class="class">
+<dt id="pyhkp.HKP">
+<em class="property">class </em><tt class="descclassname">pyhkp.</tt><tt class="descname">HKP</tt><big>(</big><em>host</em>, <em>port=11371</em><big>)</big><a class="reference internal" href="_modules/pyhkp.html#HKP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhkp.HKP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">builtins.object</span></tt></p>
+<p>Class to interact with keyservers using the OpenPGP HTTP Keyserver Protocol
+(HKP), as defined in
+<a class="reference external" href="http://tools.ietf.org/html/draft-shaw-openpgp-pyhkp-00#section-3.2.1">RFC draft-shaw-openpgp-hkp-00</a>.</p>
+<dl class="staticmethod">
+<dt id="pyhkp.HKP.lookup_pubkey_algorithm">
+<em class="property">static </em><tt class="descname">lookup_pubkey_algorithm</tt><big>(</big><em>alg</em><big>)</big><a class="reference internal" href="_modules/pyhkp.html#HKP.lookup_pubkey_algorithm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhkp.HKP.lookup_pubkey_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lookup public key algorithm string for given algorithm id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>alg</strong> (<em>int</em>) &#8211; algorithm id as defined in <span class="target" id="index-0"></span><a class="rfc reference external" href="http://tools.ietf.org/html/rfc4880.html#section-9.1"><strong>RFC 4880</strong></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">algorithm name</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyhkp.HKP.retrieve">
+<tt class="descname">retrieve</tt><big>(</big><em>key_id</em>, <em>options=(None</em>, <em>)</em><big>)</big><a class="reference internal" href="_modules/pyhkp.html#HKP.retrieve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhkp.HKP.retrieve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve a public key from the keyserver by a given key id.
+Retrieval by query is not supported, since queries may be ambiguous.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>key_id</strong> (<em>str</em>) &#8211; key id to get key from</li>
+<li><strong>options</strong> (<em>tuple(str)</em>) &#8211; nonstandard option starting with &#8216;x-&#8216; (see         <a class="reference external" href="http://tools.ietf.org/html/draft-shaw-openpgp-hkp-00#section-3.2.1">RFC draft</a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">pgp public key, or None if not available/error</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str or None</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyhkp.HKP.search">
+<tt class="descname">search</tt><big>(</big><em>query</em>, <em>operation='index'</em>, <em>exact='off'</em>, <em>options=(None</em>, <em>)</em>, <em>other_variables=(None</em>, <em>)</em><big>)</big><a class="reference internal" href="_modules/pyhkp.html#HKP.search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhkp.HKP.search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Search on a keyserver with given query.
+Query can be a key id or a string.</p>
+<p>Structure of returned dict:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[{</span>
+  <span class="n">primary_key</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&#39;key_id&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+      <span class="s">&#39;algorithm_id&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+      <span class="s">&#39;algorithm&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+      <span class="s">&#39;key_length&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+      <span class="s">&#39;creation&#39;</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">,</span>
+      <span class="s">&#39;expiration&#39;</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">,</span>
+      <span class="s">&#39;revoked&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+      <span class="s">&#39;expired&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+      <span class="s">&#39;disabled&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">},</span>
+  <span class="n">user_ids</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+          <span class="s">&#39;user_id&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+          <span class="s">&#39;creation&#39;</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">,</span>
+          <span class="s">&#39;expiration&#39;</span><span class="p">:</span> <span class="n">datetime</span> <span class="ow">or</span> <span class="bp">None</span><span class="p">,</span>
+          <span class="s">&#39;revoked&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+          <span class="s">&#39;disabled&#39;</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+          <span class="s">&#39;expired&#39;</span><span class="p">:</span> <span class="nb">bool</span>
+      <span class="p">},]</span>
+<span class="p">},]</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>query</strong> (<em>str</em>) &#8211; search string</li>
+<li><strong>operation</strong> (<em>str</em>) &#8211; operation is usually index, but can be nonstandard, starting with &#8216;x-&#8216;</li>
+<li><strong>exact</strong> (<em>str</em>) &#8211; if on, the keyserver will search for an exact match for the contents of the &#8216;query&#8217; variable</li>
+<li><strong>options</strong> (<em>tuple(str)</em>) &#8211; non-standard options starting with &#8216;x-&#8216;</li>
+<li><strong>other_variables</strong> (<em>tuple of tuple of strings</em>) &#8211; other instructions, must start with &#8216;x-&#8216;</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dict containing the values described above</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyhkp.HKP.submit">
+<tt class="descname">submit</tt><big>(</big><em>keys</em>, <em>options=(None</em>, <em>)</em><big>)</big><a class="reference internal" href="_modules/pyhkp.html#HKP.submit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#pyhkp.HKP.submit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submit one or more keys to the keyserver.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>keys</strong> (<em>str</em>) &#8211; key(s) to submit</li>
+<li><strong>options</strong> (<em>tuple(str)</em>) &#8211; <p>&#8216;nm&#8217; or nonstandard option starting with &#8216;x-&#8216; (see         <a class="reference external" href="http://tools.ietf.org/html/draft-shaw-openpgp-hkp-00#section-3.2.1">RFC draft</a>)</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">http status code</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<span id="document-tests"></span><div class="section" id="module-tests">
+<span id="tests-module"></span><h2>tests module<a class="headerlink" href="#module-tests" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tests.TestHKP">
+<em class="property">class </em><tt class="descclassname">tests.</tt><tt class="descname">TestHKP</tt><big>(</big><em>methodName='runTest'</em><big>)</big><a class="reference internal" href="_modules/tests.html#TestHKP"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.TestHKP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <tt class="xref py py-class docutils literal"><span class="pre">unittest.case.TestCase</span></tt></p>
+<p>Unit tests for HKP class.</p>
+<dl class="method">
+<dt id="tests.TestHKP.setUp">
+<tt class="descname">setUp</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/tests.html#TestHKP.setUp"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.TestHKP.setUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup object instance.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.TestHKP.strip_pgp_ascii_header">
+<tt class="descname">strip_pgp_ascii_header</tt><big>(</big><em>key</em><big>)</big><a class="reference internal" href="_modules/tests.html#TestHKP.strip_pgp_ascii_header"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.TestHKP.strip_pgp_ascii_header" title="Permalink to this definition">¶</a></dt>
+<dd><p>Strip pgp ascii armor header.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>key</strong> (<em>str</em>) &#8211; key with ascii armored header</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string index of key data beginning or 0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.TestHKP.test_init">
+<tt class="descname">test_init</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/tests.html#TestHKP.test_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.TestHKP.test_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test constructor.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.TestHKP.test_lookup_pub_algorithm">
+<tt class="descname">test_lookup_pub_algorithm</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/tests.html#TestHKP.test_lookup_pub_algorithm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.TestHKP.test_lookup_pub_algorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test algorithm lookup.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.TestHKP.test_parse_options">
+<tt class="descname">test_parse_options</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/tests.html#TestHKP.test_parse_options"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.TestHKP.test_parse_options" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test parsing options.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.TestHKP.test_retrieve">
+<tt class="descname">test_retrieve</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/tests.html#TestHKP.test_retrieve"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.TestHKP.test_retrieve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test key retrieval.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.TestHKP.test_search">
+<tt class="descname">test_search</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/tests.html#TestHKP.test_search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.TestHKP.test_search" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test searching on a keyserver.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tests.TestHKP.test_submit">
+<tt class="descname">test_submit</tt><big>(</big><big>)</big><a class="reference internal" href="_modules/tests.html#TestHKP.test_submit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tests.TestHKP.test_submit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test submitting a key.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
+<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
+<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html#document-index">Table Of Contents</a></h3>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-pyhkp">pyhkp module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html#document-tests">tests module</a></li>
+</ul>
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li><a href="index.html#document-index">pyhkp 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2014, Emre Adil.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2.3.
+    </div>
+  </body>
+</html>
