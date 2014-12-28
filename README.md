@@ -1,4 +1,4 @@
-hkp
-===
+pyhkp
+=====
 
-python implementation of draft-shaw-openpgp-hkp-00
+Python3 module that provides a class to interact with OpenPGP keyservers using HKP.
